@@ -43,20 +43,20 @@ service:
 ingress:
   enabled: true
   className: ""
-  annotations: {}
+  annotations:
     kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: "letsencrypt-clusterissuer"
   hosts:
-    - host: error.raiun.de
+    - host: raiun.de
       paths:
-        - path: /
+        - path: /error
           pathType: Prefix
-  tls: []
+  tls:
     - hosts: 
-        - error.raiun.de
-        secretName: default-backend-cert
+      - raiun.de
+      secretName: raiun-cert
 
-resources: {}
+resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following

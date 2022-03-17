@@ -1,2 +1,37 @@
 controller:
   replicaCount: 2
+
+defaultBackend:
+  enabled: true
+  name: defaultbackend
+  image:
+    registry: europe-west3-docker.pkg.dev 
+    image: fresh-metrics-344214/apps/default-backend
+    tag: "latest"
+    pullPolicy: Always
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+  #   runAsUser: 0
+  # podSecurityContext:
+  #   runAsUser: 0
+  #   runAsGroup: 0
+  port: 80
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  # livenessProbe:
+  #   failurethreshold: 3
+  #   initialDelaySeconds: 30
+  #   periodSeconds: 10
+  #   successthreshold: 1
+  #   timeoutSeconds: 5
+  # readinessProbe:
+  #   failureThreshold: 6
+  #   initialDelaySeconds: 600
+  #   periodSeconds: 5
+  #   successthreshold: 1
+  #   timeoutSeconds: 5
